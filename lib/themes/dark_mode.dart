@@ -3,13 +3,9 @@ import 'package:flutter/material.dart';
 // Modern, cohesive dark theme used across the entire app.
 // Charcoal background, soft green accents, and consistent typography.
 
+const _darkBackground = Color.fromARGB(255, 31, 31, 31); // App background
 const _darkSurface = Color.fromARGB(255, 31, 31, 31); // Cards / sheets
-const _darkSurfaceHigh = Color.fromARGB(
-  255,
-  46,
-  46,
-  46,
-); // Elevated cards / containers
+const _darkSurfaceHigh = Color.fromARGB(255, 46, 46, 46); // Elevated cards / containers
 const _accentPrimary = Color(0xFF22C55E); // Emerald green
 const _accentSecondary = Color(0xFF4ADE80); // Soft green accent
 const _borderColor = Color(0xFF4B5563);
@@ -62,12 +58,14 @@ final ThemeData darkMode = ThemeData(
   // Buttons: consistent padding, radius, and hover / press feedback.
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
-      backgroundColor: MaterialStateProperty.resolveWith<Color>((states) {
-        if (states.contains(MaterialState.disabled)) {
-          return _accentPrimary.withOpacity(0.35);
-        }
-        return _accentPrimary;
-      }),
+      backgroundColor: MaterialStateProperty.resolveWith<Color>(
+        (states) {
+          if (states.contains(MaterialState.disabled)) {
+            return _accentPrimary.withOpacity(0.35);
+          }
+          return _accentPrimary;
+        },
+      ),
       foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
       overlayColor: MaterialStateProperty.all<Color>(
         Colors.white.withOpacity(0.10),
@@ -77,7 +75,9 @@ final ThemeData darkMode = ThemeData(
         const EdgeInsets.symmetric(vertical: 14, horizontal: 18),
       ),
       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-        RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
       ),
       textStyle: MaterialStateProperty.all<TextStyle>(
         const TextStyle(
@@ -95,22 +95,29 @@ final ThemeData darkMode = ThemeData(
       overlayColor: MaterialStateProperty.all<Color>(
         Colors.white.withOpacity(0.08),
       ),
-      side: MaterialStateProperty.resolveWith<BorderSide>((states) {
-        final base = _borderColor.withOpacity(0.7);
-        if (states.contains(MaterialState.focused) ||
-            states.contains(MaterialState.hovered)) {
-          return BorderSide(color: _accentPrimary, width: 1.4);
-        }
-        return BorderSide(color: base, width: 1.1);
-      }),
+      side: MaterialStateProperty.resolveWith<BorderSide>(
+        (states) {
+          final base = _borderColor.withOpacity(0.7);
+          if (states.contains(MaterialState.focused) ||
+              states.contains(MaterialState.hovered)) {
+            return BorderSide(color: _accentPrimary, width: 1.4);
+          }
+          return BorderSide(color: base, width: 1.1);
+        },
+      ),
       padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
         const EdgeInsets.symmetric(vertical: 14, horizontal: 18),
       ),
       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-        RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
       ),
       textStyle: MaterialStateProperty.all<TextStyle>(
-        const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+        const TextStyle(
+          fontSize: 15,
+          fontWeight: FontWeight.w600,
+        ),
       ),
     ),
   ),
@@ -122,7 +129,10 @@ final ThemeData darkMode = ThemeData(
         _accentPrimary.withOpacity(0.12),
       ),
       textStyle: MaterialStateProperty.all<TextStyle>(
-        const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+        const TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+        ),
       ),
     ),
   ),
@@ -131,7 +141,10 @@ final ThemeData darkMode = ThemeData(
     filled: true,
     fillColor: _darkSurface,
     contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-    hintStyle: TextStyle(color: Colors.white.withOpacity(0.45), fontSize: 14),
+    hintStyle: TextStyle(
+      color: Colors.white.withOpacity(0.45),
+      fontSize: 14,
+    ),
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(12),
       borderSide: BorderSide(color: Colors.white.withOpacity(0.06)),
@@ -220,9 +233,21 @@ final ThemeData darkMode = ThemeData(
 
   // Typography: consistent sizes and weights.
   textTheme: const TextTheme(
-    bodySmall: TextStyle(fontSize: 12, height: 1.4, color: Colors.white70),
-    bodyMedium: TextStyle(fontSize: 14, height: 1.5, color: Colors.white),
-    bodyLarge: TextStyle(fontSize: 16, height: 1.5, color: Colors.white),
+    bodySmall: TextStyle(
+      fontSize: 12,
+      height: 1.4,
+      color: Colors.white70,
+    ),
+    bodyMedium: TextStyle(
+      fontSize: 14,
+      height: 1.5,
+      color: Colors.white,
+    ),
+    bodyLarge: TextStyle(
+      fontSize: 16,
+      height: 1.5,
+      color: Colors.white,
+    ),
     titleMedium: TextStyle(
       fontSize: 14,
       fontWeight: FontWeight.w600,
